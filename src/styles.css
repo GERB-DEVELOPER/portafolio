@@ -82,6 +82,11 @@
     /* rápida: cambios de color */
     --transition-base: 300ms ease;
     /* normal: movimientos */
+
+    --transition-base: 300ms ease;
+    /* normal: movimientos */
+    --container-width: 1100px;
+    /* ancho máximo del contenido */
 }
 
 /* PALETAS. Si <html> tiene data-palette="...", se reemplazan
@@ -114,6 +119,11 @@
     /* quita todos los márgenes */
     padding: 0;
     /* quita todos los rellenos */
+}
+
+/* Desplazamiento suave al saltar a una sección con un enlace (#seccion) */
+html {
+    scroll-behavior: smooth;
 }
 
 /* Todo el texto de la página usa Inter */
@@ -228,4 +238,65 @@ p {
 .btn-outline:hover {
     background-color: var(--color-primary);
     color: var(--color-on-primary);
+}
+
+/* CONTENEDOR: centra el contenido y deja márgenes a los lados */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    /* nunca más ancho que 1100px */
+    margin-inline: auto;
+    /* centra horizontalmente */
+    padding-inline: var(--space-5);
+    /* 24px a izquierda y derecha */
+}
+
+/* SECCIÓN: espacio arriba y abajo de cada bloque de la página */
+.section {
+    padding-block: var(--space-8);
+    /* 64px arriba y abajo */
+}
+
+/* ETIQUETA DE SECCIÓN: texto pequeño sobre los títulos (ej.: "MIS PROYECTOS") */
+.section-tag {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: var(--text-sm);
+    /* 14px */
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    /* letras un poco separadas */
+    text-transform: uppercase;
+    /* todo en mayúsculas */
+    color: var(--color-primary);
+    /* color de la paleta */
+    margin-bottom: var(--space-2);
+    /* 8px de separación con el título */
+}
+
+/* TARJETA: caja blanca con borde, esquinas redondeadas y sombra suave */
+.card {
+    background-color: var(--color-surface);
+    /* blanco */
+    border: 1px solid var(--color-border);
+    /* borde gris claro */
+    border-radius: var(--radius-lg);
+    /* esquinas redondeadas (20px) */
+    padding: var(--space-6);
+    /* 32px de relleno interno */
+    box-shadow: var(--shadow-sm);
+    /* sombra muy suave */
+}
+
+/* ACCESIBILIDAD: si el usuario pidió reducir animaciones en su sistema,
+   las desactivamos en todo el sitio */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

@@ -1,0 +1,26 @@
+/* Estilos SOLO de este componente.
+   Angular los encapsula: no afectan a otras páginas. */
+
+/* Fila de botones: uno al lado del otro, con espacio entre ellos */
+.btn-row {
+    display: flex;
+    /* los hijos se ponen en fila */
+    flex-wrap: wrap;
+    /* si no caben, bajan a otra línea */
+    gap: var(--space-4);
+    /* 16px entre cada botón */
+    margin-top: var(--space-6);
+    /* 32px de separación con el texto de arriba */
+}
+
+/* Separación entre la fila de botones y la tarjeta */
+.card {
+    margin-top: var(--space-7);
+    /* 48px */
+}
+
+/* Separación entre el título de la tarjeta y su texto */
+.card h3 {
+    margin-bottom: var(--space-2);
+    /* 8px */
+}

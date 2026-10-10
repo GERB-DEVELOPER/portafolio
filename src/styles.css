@@ -1,1 +1,231 @@
-/* You can add global styles to this file, and also import other style files */
+/* Variables: valores que definimos una vez y reutilizamos */
+:root {
+    --font-heading: 'Poppins', system-ui, sans-serif;
+    /* fuente de títulos */
+    --font-body: 'Inter', system-ui, sans-serif;
+    /* fuente de textos */
+
+    /* Colores de la paleta (cambian según data-palette). Por defecto: azul */
+    --color-primary: #2563EB;
+    /* botones, enlaces, destacados */
+    --color-primary-hover: #1D4ED8;
+    /* primario más oscuro, para el hover */
+    --color-accent: #06B6D4;
+    /* SOLO decorativo: líneas, íconos, detalles */
+
+    /* Colores neutros (iguales en las 4 paletas) */
+    --color-bg: #F8FAFC;
+    /* fondo general de la página (gris muy claro) */
+    --color-surface: #FFFFFF;
+    /* tarjetas y paneles (blanco) */
+    --color-text: #0F172A;
+    /* títulos y texto principal (casi negro) */
+    --color-text-muted: #475569;
+    /* texto secundario (gris medio) */
+    --color-border: #E2E8F0;
+    /* bordes y líneas divisorias (gris claro) */
+    --color-on-primary: #FFFFFF;
+    /* texto que va ENCIMA del color primario */
+
+    /* Escala de tamaños de texto */
+    --text-sm: 0.875rem;
+    /* 14px: etiquetas, fechas */
+    --text-base: 1rem;
+    /* 16px: texto normal */
+    --text-lg: 1.125rem;
+    /* 18px: texto destacado */
+    --text-xl: 1.5rem;
+    /* 24px: títulos de tarjeta (h3) */
+    --text-2xl: clamp(1.75rem, 4vw, 2.25rem);
+    /* 28px a 36px: subtítulos (h2) */
+    --text-3xl: clamp(2rem, 5vw, 3.5rem);
+    /* 32px a 56px: título principal (h1) */
+
+    /* NUEVO: escala de espaciado (márgenes y rellenos) */
+    --space-1: 0.25rem;
+    /* 4px  */
+    --space-2: 0.5rem;
+    /* 8px  */
+    --space-3: 0.75rem;
+    /* 12px */
+    --space-4: 1rem;
+    /* 16px */
+    --space-5: 1.5rem;
+    /* 24px */
+    --space-6: 2rem;
+    /* 32px */
+    --space-7: 3rem;
+    /* 48px */
+    --space-8: 4rem;
+    /* 64px */
+
+    /* NUEVO: esquinas redondeadas */
+    --radius-sm: 0.375rem;
+    /* 6px: esquinas suaves */
+    --radius-md: 0.75rem;
+    /* 12px */
+    --radius-lg: 1.25rem;
+    /* 20px: tarjetas */
+    --radius-full: 999px;
+    /* totalmente redondo: botones tipo píldora, avatares */
+
+    /* NUEVO: sombras */
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    /* casi imperceptible */
+    --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+    /* media: elementos flotando */
+    --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12);
+    /* grande: elementos destacados */
+
+    /* Velocidad de las animaciones */
+    --transition-fast: 150ms ease;
+    /* rápida: cambios de color */
+    --transition-base: 300ms ease;
+    /* normal: movimientos */
+}
+
+/* PALETAS. Si <html> tiene data-palette="...", se reemplazan
+   SOLO los 3 colores de la paleta. Lo demás se mantiene. */
+:root[data-palette="esmeralda"] {
+    --color-primary: #047857;
+    --color-primary-hover: #065F46;
+    --color-accent: #F59E0B;
+}
+
+:root[data-palette="violeta"] {
+    --color-primary: #7C3AED;
+    --color-primary-hover: #6D28D9;
+    --color-accent: #EC4899;
+}
+
+:root[data-palette="grafito"] {
+    --color-primary: #27272A;
+    --color-primary-hover: #18181B;
+    --color-accent: #F97316;
+}
+
+/* RESET. Borra los estilos que el navegador pone por defecto */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /* el ancho incluye el padding y el borde */
+    margin: 0;
+    /* quita todos los márgenes */
+    padding: 0;
+    /* quita todos los rellenos */
+}
+
+/* Todo el texto de la página usa Inter */
+body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Las imágenes nunca se salen de su contenedor */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Enlaces con el color primario */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+/* Al pasar el mouse, el enlace se oscurece */
+a:hover {
+    color: var(--color-primary-hover);
+}
+
+/* Los títulos usan Poppins */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+}
+
+/* Tamaño y grosor de cada título */
+h1 {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: var(--text-2xl);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: var(--text-xl);
+    font-weight: 600;
+}
+
+/* Los párrafos usan el gris secundario */
+p {
+    color: var(--color-text-muted);
+    max-width: 65ch;
+}
+
+/* NUEVO: BOTÓN BASE (forma, tamaño y animación) */
+.btn {
+    display: inline-flex;
+    /* ícono y texto en línea */
+    align-items: center;
+    /* centrados verticalmente */
+    gap: var(--space-2);
+    /* 8px entre ícono y texto */
+    padding: var(--space-3) var(--space-5);
+    /* 12px arriba/abajo, 24px a los lados */
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    /* forma de píldora */
+    border: 2px solid transparent;
+    /* borde invisible (ver explicación) */
+    cursor: pointer;
+    /* cursor de "manito" */
+    transition: background-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+/* NUEVO: al pasar el mouse, el botón sube un poco y aparece una sombra */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* NUEVO: botón principal: relleno con el color primario */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    color: var(--color-on-primary);
+    /* evita que a:hover cambie el color del texto */
+}
+
+/* NUEVO: botón secundario: solo borde */
+.btn-outline {
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* Al pasar el mouse, se rellena */
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}

@@ -1,0 +1,70 @@
+/* La barra completa: blanca, fija arriba al hacer scroll */
+.navbar {
+    position: sticky;
+    /* se queda pegada arriba al bajar */
+    top: 0;
+    /* pegada al borde superior */
+    z-index: 100;
+    /* por encima del contenido */
+    background-color: var(--color-surface);
+    /* blanco */
+    border-bottom: 1px solid var(--color-border);
+    /* línea fina abajo */
+}
+
+/* Contenido de la barra: logo a la izquierda, enlaces a la derecha */
+.navbar-inner {
+    display: flex;
+    align-items: center;
+    /* centrados verticalmente */
+    justify-content: space-between;
+    /* uno a cada extremo */
+    height: 72px;
+    /* alto fijo de la barra */
+}
+
+/* Logo / nombre */
+.navbar-brand {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 900;
+    color: var(--color-text);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* Tamaño del logo */
+.navbar-logo {
+    height: 76px;
+    /* alto fijo; el ancho se ajusta solo */
+    width: auto;
+}
+
+/* Lista de enlaces: en fila y sin viñetas */
+.navbar-links {
+    display: flex;
+    gap: var(--space-6);
+    /* 32px entre enlaces */
+    list-style: none;
+    /* quita las viñetas (•) */
+}
+
+/* Cada enlace */
+.navbar-links a {
+    font-weight: 500;
+    color: var(--color-text-muted);
+    /* gris */
+    transition: color var(--transition-fast);
+}
+
+/* Al pasar el mouse, el enlace toma el color de la paleta */
+.navbar-links a:hover {
+    color: var(--color-primary);
+}
+
+/* Enlace de la página actual */
+.navbar-links a.active {
+    color: var(--color-primary);
+    font-weight: 600;
+}

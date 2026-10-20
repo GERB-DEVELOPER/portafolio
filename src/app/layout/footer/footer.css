@@ -1,0 +1,45 @@
+/* Franja del footer: blanca, con línea arriba */
+.footer {
+    background-color: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-6);
+    /* 32px arriba y abajo */
+}
+
+/* Texto a la izquierda, redes a la derecha */
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    /* en el celular, uno debajo del otro */
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+}
+
+/* Texto del copyright más pequeño */
+.footer p {
+    font-size: var(--text-sm);
+}
+
+/* Íconos de redes en fila */
+.footer-social {
+    display: flex;
+    gap: var(--space-4);
+    /* 16px entre íconos */
+}
+
+/* Cada ícono */
+.footer-social a {
+    font-size: var(--text-lg);
+    /* 18px */
+    color: var(--color-text-muted);
+    /* gris */
+    transition: color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+/* Al pasar el mouse: color de la paleta y sube un poco */
+.footer-social a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}

@@ -1,0 +1,340 @@
+/* ===== PRESENTACIÓN ===== */
+
+/* Texto a la izquierda, cifras a la derecha */
+.about-intro {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    gap: var(--space-7);
+}
+
+.about-paragraph {
+    margin-top: var(--space-4);
+    font-size: var(--text-lg);
+}
+
+/* Cuadrícula de cifras */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-4);
+    list-style: none;
+}
+
+/* Cada cifra: número grande y etiqueta debajo */
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-5);
+    text-align: center;
+}
+
+.stat-value {
+    font-family: var(--font-heading);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.stat-label {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+/* ===== LÍNEA DE TIEMPO ===== */
+
+.about-subtitle {
+    margin-bottom: var(--space-6);
+}
+
+/* La lista: deja espacio a la izquierda para la línea y los círculos */
+.timeline {
+    position: relative;
+    /* la línea se ubica respecto a la lista */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    /* 24px entre ítems */
+    padding-left: var(--space-7);
+    /* 48px a la izquierda */
+    list-style: none;
+}
+
+/* La línea vertical */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    /* centro de los círculos de 40px */
+    top: 0;
+    bottom: 0;
+    /* top + bottom = alto completo */
+    width: 2px;
+    background-color: var(--color-border);
+}
+
+/* Cada ítem: referencia para ubicar su círculo */
+.timeline-item {
+    position: relative;
+}
+
+/* El círculo con el ícono, sobre la línea */
+.timeline-icon {
+    position: absolute;
+    left: calc(-1 * var(--space-7));
+    /* -48px: al espacio del padding de la lista */
+    top: var(--space-5);
+    z-index: 1;
+    /* encima de la línea */
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-surface);
+    /* tapa la línea detrás del círculo */
+    color: var(--color-primary);
+}
+
+/* El ítem actual: círculo relleno */
+.is-current .timeline-icon {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+}
+
+/* Tarjeta del ítem: más compacta y con animación al pasar el mouse */
+.timeline-content {
+    padding: var(--space-5);
+    transition: transform var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.timeline-content:hover {
+    transform: translateX(4px);
+    /* se desliza hacia la derecha */
+    box-shadow: var(--shadow-md);
+}
+
+.timeline-content h3 {
+    margin-block: var(--space-1);
+}
+
+/* Periodo: pequeño, en color, con la etiqueta al lado */
+.timeline-period {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* Etiqueta "Actualidad" */
+.timeline-badge {
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-size: 0.75rem;
+}
+
+/* Lugar: en color de texto principal, no gris */
+.timeline-place {
+    margin-bottom: var(--space-2);
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+/* ===== HABILIDADES ===== */
+
+/* Grupos en cuadrícula: tantas columnas como quepan */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-5);
+}
+
+/* Título del grupo con su ícono */
+.skill-group-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+}
+
+.skill-group-title i {
+    color: var(--color-primary);
+}
+
+/* Lista de habilidades del grupo */
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    list-style: none;
+}
+
+/* Nombre a la izquierda, porcentaje a la derecha */
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+.skill-level {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* El riel gris */
+.skill-bar {
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-border);
+    overflow: hidden;
+    /* el relleno respeta los bordes redondeados */
+}
+
+/* El relleno de color, que crece desde la izquierda */
+.skill-fill {
+    height: 100%;
+    border-radius: inherit;
+    /* mismo redondeo que el riel */
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    transform-origin: left;
+    /* crece desde la izquierda */
+    animation: fill-bar 1.2s ease-out both;
+}
+
+/* Animación: de 0 al ancho real */
+@keyframes fill-bar {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* ===== HABILIDADES ===== */
+
+/* Grupos en cuadrícula: tantas columnas como quepan */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-5);
+}
+
+/* Título del grupo con su ícono */
+.skill-group-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+}
+
+.skill-group-title i {
+    color: var(--color-primary);
+}
+
+/* Lista de habilidades del grupo */
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    list-style: none;
+}
+
+/* Nombre a la izquierda, porcentaje a la derecha */
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 500;
+}
+
+.skill-level {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* El riel gris */
+.skill-bar {
+    height: 8px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-border);
+    overflow: hidden;
+    /* el relleno respeta los bordes redondeados */
+}
+
+/* El relleno de color, que crece desde la izquierda */
+.skill-fill {
+    height: 100%;
+    border-radius: inherit;
+    /* mismo redondeo que el riel */
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    transform-origin: left;
+    /* crece desde la izquierda */
+    animation: fill-bar 1.2s ease-out both;
+}
+
+/* Animación: de 0 al ancho real */
+@keyframes fill-bar {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* ===== CIERRE ===== */
+.cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: center;
+    border-top: 4px solid var(--color-accent);
+    /* línea de acento arriba */
+}
+
+/* ===== ANIMACIÓN DE ENTRADA ===== */
+@keyframes about-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* El texto y las cifras de la presentación aparecen desde abajo */
+.about-text,
+.stats {
+    animation: about-fade-up 0.6s ease both;
+}
+
+.stats {
+    animation-delay: 0.2s;
+    /* las cifras, un poco después */
+}
+
+/* ===== CELULAR Y TABLET ===== */
+@media (max-width: 768px) {
+    .about-intro {
+        grid-template-columns: 1fr;
+        /* texto arriba, cifras abajo */
+    }
+}

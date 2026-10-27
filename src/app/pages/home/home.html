@@ -1,1 +1,70 @@
-<p>home works!</p>
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="container hero-inner">
+
+        <!-- Columna de texto -->
+        <div class="hero-text">
+            <span class="section-tag">{{ profile.greeting }}</span>
+            <h1>{{ profile.name }}</h1>
+            <p class="hero-role">
+                <!-- Para lectores de pantalla: todos los roles, sin animación -->
+                <span class="sr-only">{{ profile.roles.join(', ') }}</span>
+                <!-- En pantalla: el texto animado y el cursor -->
+                <span aria-hidden="true">{{ typedText() }}</span><span class="cursor" aria-hidden="true"></span>
+            </p>
+
+            <p class="hero-bio">{{ profile.bio }}</p>
+
+            <div class="hero-actions">
+                <a routerLink="/proyectos" class="btn btn-primary">
+                    <i class="bi bi-grid"></i> Ver proyectos
+                </a>
+                <a [href]="profile.cvUrl" download class="btn btn-outline">
+                    <i class="bi bi-download"></i> Descargar CV
+                </a>
+            </div>
+            <!-- Redes sociales: un enlace por cada elemento de la lista -->
+            <div class="hero-social">
+                @for (social of profile.socials; track social.url) {
+                <a [href]="social.url" target="_blank" [attr.aria-label]="social.label">
+                    <i class="bi {{ social.icon }}"></i>
+                </a>
+                }
+            </div>
+
+
+        </div>
+
+        <!-- Columna visual: foto o iniciales -->
+        <div class="hero-visual">
+            @if (profile.photo) {
+            <img [src]="profile.photo" [alt]="'Foto de ' + profile.name" class="hero-avatar">
+            } @else {
+            <div class="hero-avatar" aria-hidden="true">{{ profile.initials }}</div>
+            }
+        </div>
+
+    </div>
+</section>
+<!-- ===== TARJETAS DE SECCIONES ===== -->
+<section class="section">
+    <div class="container">
+        <span class="section-tag">Explora</span>
+        <h2 class="highlights-title">¿Qué encontrarás aquí?</h2>
+
+        <div class="highlights-grid">
+            @for (item of highlights; track item.link) {
+            <article class="card highlight-card">
+                <span class="highlight-icon">
+                    <i class="bi {{ item.icon }}"></i>
+                </span>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.text }}</p>
+                <a [routerLink]="item.link" class="highlight-link">
+                    {{ item.linkText }} <i class="bi bi-arrow-right"></i>
+                </a>
+            </article>
+            }
+        </div>
+    </div>
+</section>

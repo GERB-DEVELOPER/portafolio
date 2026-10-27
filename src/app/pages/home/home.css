@@ -1,0 +1,293 @@
+/* ===== HERO ===== */
+/* Sección hero: referencia para los círculos decorativos */
+.hero {
+    position: relative;
+    /* los ::before y ::after se ubican respecto al hero */
+    overflow: hidden;
+    /* los círculos no salen del hero ni generan scroll */
+}
+
+/* Círculo grande arriba a la derecha */
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    top: -140px;
+    right: -140px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-primary);
+    opacity: 0.08;
+}
+
+/* Círculo pequeño abajo a la izquierda */
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    bottom: -100px;
+    left: -100px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-accent);
+    opacity: 0.1;
+}
+
+/* Contenedor de las dos columnas */
+.hero-inner {
+    position: relative;
+    /* NUEVO: encima de los círculos */
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    /* texto más ancho que el avatar */
+    align-items: center;
+    /* centrados verticalmente */
+    gap: var(--space-7);
+    /* 48px entre columnas */
+    min-height: calc(100vh - 72px);
+    /* alto de la ventana menos la navbar */
+    padding-block: var(--space-8);
+    /* 64px arriba y abajo */
+}
+
+/* Rol: grande y con el color de la paleta */
+.hero-role {
+    margin-top: var(--space-3);
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-primary);
+    min-height: 1.5em;
+    /* reserva el alto aunque el texto esté vacío */
+}
+
+/* Cursor parpadeante de la máquina de escribir */
+.cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.1em;
+    margin-left: 4px;
+    vertical-align: text-bottom;
+    background-color: var(--color-primary);
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Presentación */
+.hero-bio {
+    margin-top: var(--space-4);
+    font-size: var(--text-lg);
+}
+
+/* Botones */
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+}
+
+/* Redes sociales del hero */
+.hero-social {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+.hero-social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-text-muted);
+    font-size: var(--text-lg);
+    transition: background-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.hero-social a:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-on-primary);
+    transform: translateY(-3px);
+}
+
+/* Avatar: círculo con degradado e iniciales (o foto) */
+.hero-avatar {
+    display: grid;
+    place-items: center;
+    /* centra las iniciales */
+    width: clamp(200px, 28vw, 300px);
+    /* entre 200 y 300px según la pantalla */
+    aspect-ratio: 1;
+    /* alto = ancho: siempre cuadrado */
+    margin-inline: auto;
+    /* centrado en su columna */
+    border-radius: var(--radius-full);
+    /* círculo */
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: var(--color-on-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    font-weight: 700;
+    box-shadow: var(--shadow-lg);
+    object-fit: cover;
+    /* si es foto: llena sin deformarse */
+}
+
+/* ===== TARJETAS DE SECCIONES ===== */
+
+.highlights-title {
+    margin-bottom: var(--space-6);
+}
+
+/* Cuadrícula: tantas columnas como quepan, de mínimo 260px */
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-5);
+}
+
+/* Cada tarjeta: contenido en columna y animación al pasar el mouse */
+.highlight-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    transition: transform var(--transition-base),
+        box-shadow var(--transition-base);
+}
+
+.highlight-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Ícono dentro de un cuadrado con el color de la paleta */
+.highlight-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    font-size: var(--text-xl);
+}
+
+/* Enlace al pie de la tarjeta */
+.highlight-link {
+    margin-top: auto;
+    /* empuja el enlace al fondo de la tarjeta */
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 600;
+}
+
+/* La flecha se mueve a la derecha al pasar el mouse */
+.highlight-link i {
+    transition: transform var(--transition-fast);
+}
+
+.highlight-link:hover i {
+    transform: translateX(4px);
+}
+
+/* ===== CELULAR Y TABLET (768px o menos) ===== */
+@media (max-width: 768px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        /* una sola columna */
+        text-align: center;
+        min-height: auto;
+        /* el alto lo da el contenido */
+    }
+
+    .hero-visual {
+        order: -1;
+        /* el avatar pasa arriba */
+    }
+
+    .hero-bio {
+        margin-inline: auto;
+        /* centra el párrafo (tiene ancho máximo) */
+    }
+
+    .hero-actions,
+    .hero-social {
+        justify-content: center;
+        /* centra los botones */
+    }
+}
+
+/* ===== ANIMACIONES ===== */
+
+/* Aparecer desde abajo */
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Flotar suavemente */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Cada hijo del texto aparece desde abajo... */
+.hero-text>* {
+    animation: fade-up 0.6s ease both;
+}
+
+/* ...uno después del otro */
+.hero-text> :nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.hero-text> :nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.hero-text> :nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.hero-text> :nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.hero-text> :nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+/* El avatar aparece un poco después y luego flota sin parar */
+.hero-visual {
+    animation: fade-up 0.8s ease 0.3s both;
+}
+
+.hero-avatar {
+    animation: float 6s ease-in-out infinite;
+}

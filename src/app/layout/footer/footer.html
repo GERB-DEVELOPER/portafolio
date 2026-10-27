@@ -2,21 +2,17 @@
     <div class="container footer-inner">
 
         <!-- Año automático: viene de la propiedad "year" de footer.ts -->
-        <p>© {{ year }} GERB DEV Hecho con Angular.</p>
+        <p>© {{ year }} {{ profile.name }}. Hecho con Angular.</p>
 
         <!-- Redes sociales -->
         <div class="footer-social">
-            <a href="https://github.com/GERB-DEVELOPER" target="_blank" aria-label="GitHub">
-                <i class="bi bi-github"></i>
+            @for (social of profile.socials; track social.url) {
+            <a [href]="social.url" target="_blank" [attr.aria-label]="social.label">
+                <i class="bi {{ social.icon }}"></i>
             </a>
-            <a href="https://www.linkedin.com/in/giovanni-emilio-ramirez-berrocal-28b5161b8/?isSelfProfile=true"
-                target="_blank" aria-label="LinkedIn">
-                <i class="bi bi-linkedin"></i>
-            </a>
-            <a href="RAMIREZBERROCALGIOVANNI@gmail.com" aria-label="Correo">
-                <i class="bi bi-envelope"></i>
-            </a>
+            }
         </div>
+
 
     </div>
 </footer>

@@ -1,1 +1,119 @@
-<p>about works!</p>
+<!-- ===== PRESENTACIÓN ===== -->
+<section class="section">
+    <div class="container about-intro">
+
+        <!-- Texto -->
+        <div class="about-text">
+            <span class="section-tag">Sobre mí</span>
+            <h1>{{ about.title }}</h1>
+
+            @for (paragraph of about.paragraphs; track $index) {
+            <p class="about-paragraph">{{ paragraph }}</p>
+            }
+        </div>
+
+        <!-- Cifras -->
+        <ul class="stats">
+            @for (stat of about.stats; track stat.label) {
+            <li class="card stat">
+                <span class="stat-value">{{ stat.value }}</span>
+                <span class="stat-label">{{ stat.label }}</span>
+            </li>
+            }
+        </ul>
+
+    </div>
+    <!-- ===== LÍNEA DE TIEMPO ===== -->
+    <section class="section">
+        <div class="container">
+            <span class="section-tag">Trayectoria</span>
+            <h2 class="about-subtitle">Estudios y experiencia</h2>
+
+            <ol class="timeline">
+                @for (item of timeline; track item.title) {
+                <li class="timeline-item" [class.is-current]="item.current">
+
+                    <!-- Ícono según el tipo -->
+                    <span class="timeline-icon" aria-hidden="true">
+                        @switch (item.type) {
+                        @case ('education') {
+                        <i class="bi bi-mortarboard"></i>
+                        }
+                        @case ('work') {
+                        <i class="bi bi-briefcase"></i>
+                        }
+                        @default {
+                        <i class="bi bi-award"></i>
+                        }
+                        }
+                    </span>
+
+                    <!-- Contenido -->
+                    <div class="card timeline-content">
+                        <p class="timeline-period">
+                            {{ item.period }}
+                            @if (item.current) {
+                            <span class="timeline-badge">Actualidad</span>
+                            }
+                        </p>
+                        <h3>{{ item.title }}</h3>
+                        <p class="timeline-place">{{ item.place }}</p>
+                        <p>{{ item.description }}</p>
+                    </div>
+
+                </li>
+                }
+            </ol>
+        </div>
+    </section>
+    <!-- ===== HABILIDADES ===== -->
+    <section class="section">
+        <div class="container">
+            <span class="section-tag">Habilidades</span>
+            <h2 class="about-subtitle">Lo que sé hacer</h2>
+            <div class="skills-grid">
+                <!-- @for de afuera: un grupo por tarjeta -->
+                @for (group of skillGroups; track group.title) {
+                <article class="card skill-group">
+                    <h3 class="skill-group-title">
+                        <i class="bi {{ group.icon }}"></i> {{ group.title }}
+                    </h3>
+
+                    <ul class="skill-list">
+                        <!-- @for de adentro: las habilidades de ESE grupo -->
+                        @for (skill of group.skills; track skill.name; let i = $index) {
+                        <li>
+                            <div class="skill-header">
+                                <span>{{ skill.name }}</span>
+                                <span class="skill-level">{{ skill.level }}%</span>
+                            </div>
+
+                            <!-- Barra: el riel gris y el relleno de color -->
+                            <div class="skill-bar" role="progressbar" [attr.aria-label]="skill.name"
+                                [attr.aria-valuenow]="skill.level" aria-valuemin="0" aria-valuemax="100">
+                                <div class="skill-fill" [style.width.%]="skill.level"
+                                    [style.animation-delay.ms]="i * 150">
+                                </div>
+                            </div>
+                        </li>
+                        }
+                    </ul>
+                </article>
+                }
+            </div>
+        </div>
+    </section>
+    <!-- ===== CIERRE ===== -->
+    <section class="section">
+        <div class="container">
+            <div class="card cta">
+                <h2>¿Trabajamos juntos?</h2>
+                <p>Estoy buscando oportunidades de prácticas y proyectos. Si te interesa mi perfil, escríbeme.</p>
+                <a routerLink="/contacto" class="btn btn-primary">
+                    <i class="bi bi-send"></i> Contáctame
+                </a>
+            </div>
+        </div>
+    </section>
+
+</section>

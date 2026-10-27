@@ -197,3 +197,58 @@ export const SKILL_GROUPS: SkillGroup[] = [
     ],
   },
 ];
+/* =========================================================
+   PROYECTOS
+   ========================================================= */
+
+/** Molde de un proyecto */
+export interface Project {
+  title: string;          // nombre del proyecto
+  description: string;    // qué hace, en una o dos líneas
+  year: number;           // año (número)
+  tech: string[];         // tecnologías usadas: se usan para el filtro
+  image?: string;         // opcional: captura en public/projects/
+  repoUrl?: string;       // opcional: enlace al código en GitHub
+  demoUrl?: string;       // opcional: enlace a la versión publicada
+  featured?: boolean;     // opcional: true para marcarlo como destacado
+}
+
+/** Tus proyectos: los mejores primero */
+export const PROJECTS: Project[] = [
+  {
+    title: 'API de Gestión de Ventas',
+    description: 'API REST para registrar clientes, productos y ventas, con validaciones y manejo de errores.',
+    year: 2025,
+    tech: ['Java', 'Spring Boot', 'PostgreSQL'],
+    repoUrl: 'https://github.com/TU_USUARIO/sistema-gestion',
+    featured: true,
+  },
+  {
+    title: 'Portafolio personal',
+    description: 'Este sitio: portafolio profesional con navegación, animaciones y diseño responsive.',
+    year: 2026,
+    tech: ['Angular', 'TypeScript', 'CSS'],
+    repoUrl: 'https://github.com/TU_USUARIO/portafolio',
+    featured: true,
+  },
+  {
+    title: 'Gestor de tareas',
+    description: 'API para crear, completar y listar tareas, con base de datos y documentación automática.',
+    year: 2025,
+    tech: ['Python', 'FastAPI', 'PostgreSQL'],
+    repoUrl: 'https://github.com/TU_USUARIO/gestor-tareas',
+  },
+  {
+    title: 'Sistema de ventas en consola',
+    description: 'Programa de consola con programación orientada a objetos: productos, carrito y boleta.',
+    year: 2024,
+    tech: ['Java'],
+    repoUrl: 'https://github.com/TU_USUARIO/ventas-consola',
+  },
+  {
+    title: 'Landing page de una cafetería',
+    description: 'Página informativa con menú, ubicación y formulario de contacto.',
+    year: 2024,
+    tech: ['HTML', 'CSS'],
+  },
+];

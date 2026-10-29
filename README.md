@@ -1,59 +1,56 @@
-# Portafolio
+# Portafolio de GERB DEV
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
+Portafolio personal desarrollado con **Angular**: presentación, experiencia, proyectos y contacto.
 
-## Development server
+🔗 **Sitio publicado:** https://gerb-developer.github.io/portafolio/
 
-To start a local development server, run:
+![Captura del portafolio](docs/captura.png)
 
-```bash
-ng serve
-```
+## Funcionalidades
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- 5 páginas con navegación: Inicio, Sobre mí, Proyectos, Contacto y Guia de Estilos
+- Efecto de máquina de escribir en la presentación
+- Línea de tiempo y barras de habilidades animadas
+- Filtro de proyectos por tecnología
+- Formulario de contacto con validación
+- Modo oscuro que se recuerda entre visitas
+- Diseño responsive con menú para celular
+- Animaciones al hacer scroll, respetando `prefers-reduced-motion`
+- Publicación automática con GitHub Actions
 
-## Code scaffolding
+## Tecnologías
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+![Angular](https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-663399?logo=css&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
 
-```bash
-ng generate component component-name
-```
+## Ejecutar en tu PC
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Requisitos: Node.js 24 o superior.
 
 ```bash
-ng test
+git clone https://gerb-developer.github.io/portafolio/
+cd portafolio
+npm install
+npx ng serve
 ```
 
-## Running end-to-end tests
+Abrir http://localhost:4200
 
-For end-to-end (e2e) testing, run:
+## Estructura
 
-```bash
-ng e2e
+```
+src/app/
+├── data/       Datos del portafolio (perfil, experiencia, proyectos)
+├── layout/     Navbar y footer
+├── pages/      Inicio, Sobre mí, Proyectos y Contacto
+└── shared/     Directiva de animación al hacer scroll
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Autor
 
-## Additional Resources
+**Giovanni Ramirez Berrocal**, estudiante de Desarrollo de Sistema de Informacion en el IESTP Argentina.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- LinkedIn: https://www.linkedin.com/in/giovanni-emilio-ramirez-berrocal-28b5161b8/
+- Correo: ramirezberrocalgiovanni@gmail.com

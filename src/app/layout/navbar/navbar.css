@@ -68,3 +68,76 @@
     color: var(--color-primary);
     font-weight: 600;
 }
+
+/* Los enlaces se pegan a la derecha, junto a los botones */
+.navbar-links {
+    margin-left: auto;
+    margin-right: var(--space-5);
+}
+
+/* Botones de acción */
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+/* Botón redondo con ícono */
+.icon-btn {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-size: var(--text-lg);
+    cursor: pointer;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.icon-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* El botón del menú solo se ve en el celular */
+.menu-toggle {
+    display: none;
+}
+
+/* ===== CELULAR Y TABLET ===== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: grid;
+    }
+
+    /* La lista pasa a ser un panel debajo de la barra, oculto */
+    .navbar-links {
+        position: absolute;
+        top: 100%;
+        /* justo debajo de la navbar */
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: var(--space-2) var(--space-5) var(--space-4);
+        border-bottom: 1px solid var(--color-border);
+        background-color: var(--color-surface);
+        box-shadow: var(--shadow-md);
+    }
+
+    /* Abierto: se muestra */
+    .navbar-links.open {
+        display: flex;
+    }
+
+    /* Enlaces grandes, fáciles de tocar */
+    .navbar-links a {
+        display: block;
+        padding-block: var(--space-3);
+    }
+}

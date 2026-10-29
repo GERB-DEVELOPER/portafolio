@@ -5,15 +5,36 @@
         <!--  <a routerLink="/" class="navbar-brand">
             <img src="logogerb.png" alt="" class="navbar-logo">
             GERB DEV</a>-->
-        <a routerLink="/" class="navbar-brand">{{ profile.name }}</a>
+        <a routerLink="/" class="navbar-brand">{{ profile.initials }}</a>
 
         <!-- Enlaces del menú -->
-        <ul class="navbar-links">
+        <ul id="main-menu" class="navbar-links" [class.open]="menuOpen()" (click)="closeMenu()">
+
             <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a></li>
             <li><a routerLink="/sobre-mi" routerLinkActive="active">Sobre mí</a></li>
             <li><a routerLink="/proyectos" routerLinkActive="active">Proyectos</a></li>
             <li><a routerLink="/contacto" routerLinkActive="active">Contacto</a></li>
         </ul>
+        <!-- Botones de acción -->
+        <div class="navbar-actions">
+            <button type="button" class="icon-btn" (click)="toggleTheme()"
+                [attr.aria-label]="isDark() ? 'Activar modo claro' : 'Activar modo oscuro'">
+                @if (isDark()) {
+                <i class="bi bi-sun"></i>
+                } @else {
+                <i class="bi bi-moon-stars"></i>
+                }
+            </button>
+            <button type="button" class="icon-btn menu-toggle" (click)="toggleMenu()" [attr.aria-expanded]="menuOpen()"
+                aria-controls="main-menu" aria-label="Abrir menú">
+                @if (menuOpen()) {
+                <i class="bi bi-x-lg"></i>
+                } @else {
+                <i class="bi bi-list"></i>
+                }
+            </button>
+
+        </div>
 
     </nav>
 </header>

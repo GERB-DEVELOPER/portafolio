@@ -31,7 +31,7 @@
 
             <ol class="timeline">
                 @for (item of timeline; track item.title) {
-                <li class="timeline-item" [class.is-current]="item.current">
+                <li class="timeline-item" [class.is-current]="item.current" appReveal [revealDelay]="$index * 100">
 
                     <!-- Ícono según el tipo -->
                     <span class="timeline-icon" aria-hidden="true">
@@ -74,7 +74,7 @@
             <div class="skills-grid">
                 <!-- @for de afuera: un grupo por tarjeta -->
                 @for (group of skillGroups; track group.title) {
-                <article class="card skill-group">
+                <article class="card skill-group" appReveal>
                     <h3 class="skill-group-title">
                         <i class="bi {{ group.icon }}"></i> {{ group.title }}
                     </h3>
@@ -92,7 +92,7 @@
                             <div class="skill-bar" role="progressbar" [attr.aria-label]="skill.name"
                                 [attr.aria-valuenow]="skill.level" aria-valuemin="0" aria-valuemax="100">
                                 <div class="skill-fill" [style.width.%]="skill.level"
-                                    [style.animation-delay.ms]="i * 150">
+                                    [style.animation-delay.ms]="300+ i * 150">
                                 </div>
                             </div>
                         </li>

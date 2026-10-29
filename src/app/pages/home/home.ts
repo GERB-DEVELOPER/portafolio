@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 
 import { RouterLink } from '@angular/router';             // NUEVO: el botón "Ver proyectos" usa routerLink
-import {HIGHLIGHTS,  PROFILE } from '../../data/portfolio.data';      // NUEVO: los datos personales
+import { HIGHLIGHTS, PROFILE } from '../../data/portfolio.data';      // NUEVO: los datos personales
+import { Reveal } from '../../shared/reveal';
+
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink,Reveal],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html',

@@ -27,7 +27,7 @@ export interface Profile {
 export const PROFILE: Profile = {
   name: 'Giovanni Emilio Ramirez Berrocal',
   initials: 'GERB',
-  greeting: 'Hola, los saluda...',
+  greeting: 'Hola, te saluda...',
   roles: [
     'Desarrollador Backend',
     'Programador Java y Spring Boot',
@@ -35,7 +35,7 @@ export const PROFILE: Profile = {
     'Estudiante de Desarrollo de Sistemas',
   ],
   bio: 'Construyo APIs REST y aplicaciones web. Me gusta escribir código claro y aprender tecnologías nuevas cada semana.',
-  photo: '',
+  photo: 'foto.jpg',
   cvUrl: 'cv.pdf',
   socials: [
     { label: 'GitHub',   icon: 'bi-github',   url: 'https://github.com/GERB-DEVELOPER' },
@@ -252,3 +252,24 @@ export const PROJECTS: Project[] = [
     tech: ['HTML', 'CSS'],
   },
 ];
+/* =========================================================
+   CONTACTO
+   ========================================================= */
+
+/** Molde de la información de contacto */
+export interface ContactInfo {
+  title: string;
+  text: string;
+  email: string;
+  location: string;
+  availability: string;
+}
+
+/** Tu información de contacto */
+export const CONTACT: ContactInfo = {
+  title: 'Hablemos',
+  text: '¿Tienes una propuesta, una oportunidad de prácticas o una pregunta sobre mis proyectos? Escríbeme y te responderé pronto.',
+  email: 'RAMIREZBERROCALGIOVANNI@gmail.com',
+  location: 'Cale Marcahuasi # 192 La Molina,Lima, Perú',
+  availability: 'Disponible para prácticas',
+};

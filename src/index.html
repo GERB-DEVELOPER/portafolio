@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-palette="esmeralda">
+<html lang="es" data-palette="violeta" data-theme="dark">
 
 <head>
   <meta charset="utf-8">
@@ -13,6 +13,17 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
     rel="stylesheet">
+
+  <!-- Aplica el tema ANTES de que cargue Angular, para evitar un destello claro -->
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');                                  // 1. ¿hay uno guardado?
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; // 2. ¿el sistema está en oscuro?
+      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+    })();
+  </script>
+
+
 </head>
 
 <body>

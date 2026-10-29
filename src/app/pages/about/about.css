@@ -282,11 +282,20 @@
     background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
     transform-origin: left;
     /* crece desde la izquierda */
-    animation: fill-bar 1.2s ease-out both;
+    /*animation: fill-bar 1.2s ease-out both;*/
+    transform: scaleX(0);
+    /* empieza vacía */
+    transition: transform 1.2s ease-out;
+    /* se llena con una transición */
+}
+
+/* Cuando el grupo aparece en pantalla, las barras se llenan */
+.skill-group.is-visible .skill-fill {
+    transform: scaleX(1);
 }
 
 /* Animación: de 0 al ancho real */
-@keyframes fill-bar {
+/* @keyframes fill-bar {
     from {
         transform: scaleX(0);
     }
@@ -294,7 +303,7 @@
     to {
         transform: scaleX(1);
     }
-}
+} */
 
 /* ===== CIERRE ===== */
 .cta {

@@ -23,6 +23,33 @@ export class Navbar {
     document.documentElement.setAttribute('data-theme', theme); // cambia los colores
     localStorage.setItem('theme', theme);                       // lo recuerda
   }
+
+    // ===== PALETA DE COLORES (NUEVO) =====
+
+  // Las 4 paletas de styles.css, con su color para el circulito
+  palettes = [
+    { id: 'azul',      label: 'Azul',      color: '#2563EB' },
+    { id: 'esmeralda', label: 'Esmeralda', color: '#047857' },
+    { id: 'violeta',   label: 'Violeta',   color: '#7C3AED' },
+    { id: 'grafito',   label: 'Grafito',   color: '#71717A' },
+  ];
+
+  // Paleta actual: se lee de <html>
+  palette = signal(document.documentElement.getAttribute('data-palette') ?? 'azul');
+
+  // ¿Está abierta la lista de paletas?
+  paletteOpen = signal(false);
+
+  togglePaletteMenu(): void {
+    this.paletteOpen.update(open => !open);
+  }
+
+  setPalette(id: string): void {
+    this.palette.set(id);
+    document.documentElement.setAttribute('data-palette', id);   // cambia los colores de todo el sitio
+    localStorage.setItem('palette', id);                         // la recuerda para la próxima visita
+    this.paletteOpen.set(false);                                 // cierra la lista
+  }
     // ===== MENÚ PARA CELULAR ===== (NUEVO)
   menuOpen = signal(false);
 

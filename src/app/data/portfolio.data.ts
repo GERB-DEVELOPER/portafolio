@@ -25,14 +25,14 @@ export interface Profile {
 
 /** Tus datos */
 export const PROFILE: Profile = {
-  name: 'Giovanni Emilio Ramirez Berrocal',
+  name: 'Giovanni Emilio Ramírez Berrocal',
   initials: 'GERB',
   greeting: 'Hola, te saluda...',
   roles: [
-    'Desarrollador Backend',
-    'Programador Java y Spring Boot',
-    'ENAMORADO DE LA CHAMA',
-    'Estudiante de Desarrollo de Sistemas',
+    'Desarrollador Full Stack',
+    'Analista de Datos',
+    'Desarrollador de Apps Móviles',
+    'Docente de Educación Superior'
   ],
   bio: 'Construyo APIs REST y aplicaciones web. Me gusta escribir código claro y aprender tecnologías nuevas cada semana.',
   photo: 'foto.jpg',

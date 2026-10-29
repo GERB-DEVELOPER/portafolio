@@ -141,3 +141,79 @@
         padding-block: var(--space-3);
     }
 }
+
+/* ===== SELECTOR DE PALETA ===== */
+.palette-picker {
+    position: relative;
+    /* la lista se ubica respecto a este contenedor */
+}
+
+.palette-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    /* justo debajo del botón */
+    right: 0;
+    /* alineada a la derecha del botón */
+    z-index: 110;
+    /* encima de la navbar */
+    min-width: 170px;
+    margin: 0;
+    padding: 8px;
+    list-style: none;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    animation: palette-in 0.15s ease both;
+}
+
+.palette-option {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-2) var(--space-3);
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    text-align: left;
+    cursor: pointer;
+}
+
+.palette-option:hover {
+    background-color: var(--color-bg);
+}
+
+.palette-option.active {
+    font-weight: 600;
+}
+
+/* El ✓ se va a la derecha */
+.palette-option .bi-check2 {
+    margin-left: auto;
+    color: var(--color-primary);
+}
+
+/* Circulito de color */
+.palette-dot {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-full);
+}
+
+@keyframes palette-in {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

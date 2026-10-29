@@ -37,6 +37,8 @@
       var saved = localStorage.getItem('theme');                                  // 1. ¿hay uno guardado?
       var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches; // 2. ¿el sistema está en oscuro?
       document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      var palette = localStorage.getItem('palette');                                 // NUEVO
+      if (palette) document.documentElement.setAttribute('data-palette', palette);   // NUEVOsiguiente
     })();
   </script>
 

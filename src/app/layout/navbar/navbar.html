@@ -18,6 +18,31 @@
         </ul>
         <!-- Botones de acción -->
         <div class="navbar-actions">
+            <!-- NUEVO: selector de paleta -->
+            <div class="palette-picker">
+                <button type="button" class="icon-btn" (click)="togglePaletteMenu()"
+                    aria-label="Cambiar paleta de colores" [attr.aria-expanded]="paletteOpen()">
+                    <i class="bi bi-palette"></i>
+                </button>
+
+                @if (paletteOpen()) {
+                <ul class="palette-menu">
+                    @for (p of palettes; track p.id) {
+                    <li>
+                        <button type="button" class="palette-option" [class.active]="palette() === p.id"
+                            (click)="setPalette(p.id)">
+                            <span class="palette-dot" [style.background-color]="p.color"></span>
+                            {{ p.label }}
+                            @if (palette() === p.id) {
+                            <i class="bi bi-check2"></i>
+                            }
+                        </button>
+                    </li>
+                    }
+                </ul>
+                }
+            </div>
+
             <button type="button" class="icon-btn" (click)="toggleTheme()"
                 [attr.aria-label]="isDark() ? 'Activar modo claro' : 'Activar modo oscuro'">
                 @if (isDark()) {

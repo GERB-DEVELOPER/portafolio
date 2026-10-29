@@ -1,0 +1,59 @@
+# Flujo: compila el portafolio y lo publica en GitHub Pages
+name: Publicar en GitHub Pages
+
+# CUÁNDO se ejecuta
+on:
+  push:
+    branches: [main] # cada push a la rama main
+  workflow_dispatch: # y también con un botón manual en la pestaña Actions
+
+# PERMISOS que necesita para publicar
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Si se hacen dos push seguidos, cancela la publicación anterior
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  # TRABAJO 1: compilar
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar para producción
+        run: npx ng build --base-href /${{ github.event.repository.name }}/
+
+      - name: Copiar index.html como 404.html (rutas al recargar)
+        run: cp dist/portafolio/browser/index.html dist/portafolio/browser/404.html
+
+      - name: Preparar los archivos para Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/portafolio/browser
+
+  # TRABAJO 2: publicar (solo si el 1 terminó bien)
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

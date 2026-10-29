@@ -8,10 +8,10 @@ import { StyleGuide } from './pages/style-guide/style-guide';
 
 // 2. Lista de rutas: qué componente se muestra en cada URL
 export const routes: Routes = [
-    { path: '', component: Home },// localhost:4200/
-    { path: 'sobre-mi', component: About },// localhost:4200/sobre-mi
-    { path: 'proyectos', component: Projects },    // localhost:4200/proyectos
-    { path: 'contacto',  component: Contact },     // localhost:4200/contacto
-    { path: 'guia',      component: StyleGuide },  // localhost:4200/guia
+    { path: '', component: Home,title: 'Giovanni | Portafolio' },// localhost:4200/
+    { path: 'sobre-mi', component: About,title: 'Sobre mí | Giovanni' },// localhost:4200/sobre-mi
+    { path: 'proyectos', component: Projects, title: 'Proyectos | Giovanni' },    // localhost:4200/proyectos
+    { path: 'contacto',  component: Contact ,  title: 'Contacto | Giovanni'},     // localhost:4200/contacto
+    { path: 'guia',component: StyleGuide, title: 'Gui de estilos | Giovanni'},  // localhost:4200/guia
     { path: '**',        redirectTo: '' },         // cualquier otra URL → Inicio
 ];

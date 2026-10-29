@@ -388,3 +388,10 @@ p {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Modo oscuro: fondo claro detrás del logo para que se lea su texto */
+[data-theme="dark"] .navbar-logo {
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 3px;
+}

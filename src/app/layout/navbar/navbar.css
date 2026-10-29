@@ -29,16 +29,16 @@
     font-size: var(--text-xl);
     font-weight: 900;
     color: var(--color-text);
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: var(--space-2);
 }
 
 /* Tamaño del logo */
 .navbar-logo {
-    height: 76px;
-    /* alto fijo; el ancho se ajusta solo */
-    width: auto;
+    width: 75px;
+    height: 70px;
+    object-fit: contain;
 }
 
 /* Lista de enlaces: en fila y sin viñetas */

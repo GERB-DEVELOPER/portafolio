@@ -2,10 +2,10 @@
     <nav class="container navbar-inner">
 
         <!-- Logo / nombre: lleva al Inicio -->
-        <!--  <a routerLink="/" class="navbar-brand">
-            <img src="logogerb.png" alt="" class="navbar-logo">
-            GERB DEV</a>-->
-        <a routerLink="/" class="navbar-brand">{{ profile.initials }}</a>
+        <a routerLink="/" class="navbar-brand" aria-label="Ir al inicio">
+            <img src="favicon.png" alt="" class="navbar-logo" width="40" height="40">
+            {{ profile.initials }}
+        </a>
 
         <!-- Enlaces del menú -->
         <ul id="main-menu" class="navbar-links" [class.open]="menuOpen()" (click)="closeMenu()">

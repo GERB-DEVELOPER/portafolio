@@ -126,7 +126,7 @@
     display: grid;
     place-items: center;
     /* centra las iniciales */
-    width: clamp(200px, 28vw, 300px);
+    width: clamp(240px, 32vw, 420px);
     /* entre 200 y 300px según la pantalla */
     aspect-ratio: 1;
     /* alto = ancho: siempre cuadrado */
@@ -142,6 +142,8 @@
     box-shadow: var(--shadow-lg);
     object-fit: cover;
     /* si es foto: llena sin deformarse */
+    object-position: center top;
+    /* NUEVO: muestra la parte de arriba de la foto */
 }
 
 /* ===== TARJETAS DE SECCIONES ===== */
